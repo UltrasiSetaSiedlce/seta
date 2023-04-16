@@ -41,14 +41,11 @@
 		{ x: 0, y: 20, width: 15, height: 1 },
 		{ x: 0, y: 20, width: 15, height: 4 }
 	];
-
 	const MAP_SIZE = 50;
-
 	interface Tile {
 		x: number;
 		y: number;
 	}
-
 	const startTile = {
 		x: 1,
 		y: 0
@@ -58,9 +55,7 @@
 		x: 9,
 		y: 25
 	};
-
 	let fields = new Array(MAP_SIZE * MAP_SIZE).fill(true);
-
 	for (const shelf of shelves) {
 		for (let i = 0; i < shelf.height; ++i) {
 			for (let j = 0; j < shelf.width; ++j) {
@@ -68,7 +63,6 @@
 			}
 		}
 	}
-
 	function heuristic(a: Tile, b: Tile) {
 		return (
 			Math.abs(targetTile.x - b.x) +
@@ -77,7 +71,6 @@
 			Math.abs(targetTile.y - a.y)
 		);
 	}
-
 	function getPath() {
 		let tiles = [{ ...startTile, length: 1 }];
 		while (tiles.length) {
@@ -118,24 +111,18 @@
 			tiles.push(...nexts.map(({ x, y }) => ({ x, y, length: next.length + 1 })));
 		}
 	}
-
 	getPath();
 	console.log(path);
 </script>
 
 <script lang="ts">
 	import { onMount } from 'svelte';
-
 	import Button from '../../../shared/Button.svelte';
-
 	import type { PageData } from './$types';
-
 	export let data: PageData;
 	const orderID = data.id;
-
 	let idx = 1;
 	let paths = path.slice(0, idx);
-
 	onMount(() => {
 		const interval = setInterval(() => {
 			idx++;
@@ -144,19 +131,26 @@
 				clearInterval(interval);
 			}
 		}, 90);
-
 		return () => clearInterval(interval);
 	});
 </script>
 
-<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" class="p-8">
 	{#each shelves as { height, width, x, y }}
-		<rect width={width * 2} height={height * 2} x={x * 2} y={y * 2} />
+		<rect
+			width={width * 2}
+			height={height * 2}
+			x={x * 2}
+			y={y * 2}
+			rx="0.5"
+			ry="0.5"
+			class="fill-gray-500"
+		/>
 	{/each}
 	{#each paths as { x, y }}
-		<circle cx={x * 2 + 1} cy={y * 2 + 1} r="1" class="fill-rose-800" />
+		<circle cx={x * 2 + 1} cy={y * 2 + 1} r="0.8" class="fill-rose-800" />
 	{/each}
-	<circle cx={targetTile.y + 6} cy={targetTile.y * 2 - 1} r="1" class="fill-green-600" />
+	<circle cx={targetTile.y + 6} cy={targetTile.y * 2 - 1} r="0.9" class="fill-green-600" />
 </svg>
 
 <a href="/{orderID}/arrange" class="absolute bottom-16 right-8">
