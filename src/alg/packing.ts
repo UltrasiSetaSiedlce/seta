@@ -205,7 +205,100 @@ export const SAMPLE_FILLED_PACKING_AREA: FilledPackingArea = {
 						},
 						weight: 100
 					},
-					position: { x: SIZE_DELTA * 5, y: 0, z: SIZE_DELTA * 3 },
+					position: { x: SIZE_DELTA * 1, y: 0, z: SIZE_DELTA * 2 },
+					data: generateRandomBoxData()
+				}
+			],
+			dimensions: {
+				dx: SIZE_DELTA * 8,
+				dy: SIZE_DELTA * 10,
+				dz: SIZE_DELTA * 4
+			}
+		},
+		{
+			boxes: [
+				{
+					box: {
+						dimensions: {
+							dx: SIZE_DELTA * 2,
+							dy: SIZE_DELTA * 2,
+							dz: SIZE_DELTA * 2
+						},
+						weight: 20
+					},
+					position: { x: 0, y: 0, z: 0 },
+					data: generateRandomBoxData()
+				},
+				{
+					box: {
+						dimensions: {
+							dx: SIZE_DELTA * 2,
+							dy: SIZE_DELTA * 2,
+							dz: SIZE_DELTA * 1
+						},
+						weight: 10
+					},
+					position: { x: 0, y: SIZE_DELTA * 2, z: 0 },
+					data: generateRandomBoxData()
+				},
+				{
+					box: {
+						dimensions: {
+							dx: SIZE_DELTA * 1,
+							dy: SIZE_DELTA * 1,
+							dz: SIZE_DELTA * 1
+						},
+						weight: 40
+					},
+					position: { x: SIZE_DELTA * 1, y: SIZE_DELTA * 4, z: 0 },
+					data: generateRandomBoxData()
+				},
+				{
+					box: {
+						dimensions: {
+							dx: SIZE_DELTA * 5,
+							dy: SIZE_DELTA * 5,
+							dz: SIZE_DELTA * 3
+						},
+						weight: 100
+					},
+					position: { x: SIZE_DELTA * 3, y: 0, z: 0 },
+					data: generateRandomBoxData()
+				},
+				{
+					box: {
+						dimensions: {
+							dx: SIZE_DELTA * 3,
+							dy: SIZE_DELTA * 2,
+							dz: SIZE_DELTA * 1
+						},
+						weight: 100
+					},
+					position: { x: SIZE_DELTA * 3, y: SIZE_DELTA * 5, z: 0 },
+					data: generateRandomBoxData()
+				},
+				{
+					box: {
+						dimensions: {
+							dx: SIZE_DELTA * 3,
+							dy: SIZE_DELTA * 2,
+							dz: SIZE_DELTA * 1
+						},
+						weight: 100
+					},
+					position: { x: 0, y: 3, z: SIZE_DELTA * 2 },
+					data: generateRandomBoxData()
+				},
+				{
+					box: {
+						dimensions: {
+							dx: SIZE_DELTA * 8,
+							dy: SIZE_DELTA * 4,
+							dz: SIZE_DELTA * 1
+						},
+						weight: 100
+					},
+					position: { x: 0, y: 3, z: SIZE_DELTA * 3 },
 					data: generateRandomBoxData()
 				}
 			],
@@ -220,7 +313,8 @@ export const SAMPLE_FILLED_PACKING_AREA: FilledPackingArea = {
 
 export const SAMPLE_ORDERS = new Map<string, Order>([
 	['1024', { packingArea: SAMPLE_FILLED_PACKING_AREA, boxesNum: 24, done: true }],
-	['9324', { packingArea: SAMPLE_FILLED_PACKING_AREA, boxesNum: 8, done: false }]
+	['3309', { packingArea: SAMPLE_FILLED_PACKING_AREA, boxesNum: 15, done: true }],
+	['9324', { packingArea: SAMPLE_FILLED_PACKING_AREA, boxesNum: 19, done: false }]
 ]);
 
 export function normalize(palett: FilledPalett): FilledPalett {
